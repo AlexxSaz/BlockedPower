@@ -44,112 +44,7 @@
       </div>
     </div>
     <transition name="fade" mode="out-in">
-      <section id="factCalc" class="factCalc" v-if="isFactCalcVis">
-        <form>
-          <div class="row no-gutters calcStart">
-            <div class="col-sm-12">
-              <label for="timeChoice">Введите расчетный час</label>
-              <input type="datetime" name="timeChoice" id="timeChoice" placeholder="11.11.20 20:00">
-            </div>
-          </div>
-          <div class="row no-gutters calcStart">
-            <div class="col-sm-12">
-              <label for="sectionChoice">Выберите сечения для расчета</label>
-              <select name="sectionChoice" id="sectionChoice" onchange="">
-                <option>Кузбасс-Запад</option>
-                <option>Назаровское на запад</option>
-              </select>
-            </div>
-          </div>
-          <div class="row no-gutters calcStart">
-            <div class="col-sm-12">
-              <label for="systemChoice">Выберите энергосистемы для расчета</label>
-              <select name="systemChoice" id="systemChoice" onchange="">
-                <option>Забайкальская</option>
-                <option>Бурятская</option>
-                <option>Иркутская</option>
-                <option>Красноярская</option>
-                <option>Кузбасская</option>
-              </select>
-            </div>
-          </div>
-          <div class="row no-gutters calcStart">
-            <div class="col-sm-12">
-              <input type="button" name="getData" value="Расчет" @click="isFactResultVis = true"> <!-- При нажатии на эту кнопку будут подгружаться данные из БД и производиться расчет -->
-            </div>
-          </div>
-        </form>
-        <transition name="fade">
-          <section v-if="isFactResultVis">
-            <div class="row calcResult">
-              <div class="col-sm-12">
-                <figure>
-                  <img src="img/result_Img.png" title="Графическое представление результата расчета">
-                </figure>
-              </div>
-            </div>
-            <div class="row saveCalcResult calcResult">
-              <div class="col-sm-9">
-                <p>Сумманая величина невыпускаемый резерва мощности равена <span>8000 МВт</span></p>
-              </div>
-              <div class="col-sm-3">
-                <button>Скачать отчет</button>
-              </div>
-            </div>
-          </section>
-        </transition>
-      </section>
-      <section id="forecastCalc" class="forecastCalc" v-if="isForecastCalcVis">
-        <form>
-          <div class="row no-gutters calcStart">
-            <div class="col-sm-12">
-              <label for="tempChoice">Введите температуру наружного воздуха</label>
-              <input type="number" name="tempChoice" id="tempChoice" placeholder="22" min="-50" max="40">
-            </div>
-          </div>
-          <div class="row no-gutters calcStart">
-            <div class="col-sm-12">
-              <label for="forecastSectionChoice">Выберите сечения для расчета</label>
-              <select name="forecastSectionChoice" id="forecastSectionChoice" onchange="">
-                <option>Кузбасс-Запад</option>
-                <option>Назаровское на запад</option>
-              </select>
-            </div>
-          </div>
-          <div class="row no-gutters calcStart">
-            <div class="col-sm-12">
-              <label for="sectionChoice">Выберите энергосистемы для расчета</label>
-              <select name="calcType" id="calcType" onchange="">
-                <option>Забайкальская</option>
-                <option>Бурятская</option>
-                <option>Иркутская</option>
-                <option>Красноярская</option>
-                <option>Кузбасская</option>
-              </select>
-            </div>
-          </div>
-          <div class="row no-gutters calcStart">
-            <div class="col-sm-12">
-             <input type="button" name="getData" value="Расчет"> <!-- При нажатии на эту кнопку будут подгружаться данные из БД и производиться расчет -->
-            </div>
-          </div>
-        </form>
-        <div class="row calcResult">
-          <div class="col-sm-12">
-            <figure>
-             <img src="img/result_Img.png" title="Графическое представление результата расчета">
-            </figure>
-          </div>
-        </div>
-        <div class="row saveCalcResult calcResult">
-          <div class="col-sm-9">
-           <p>Сумманая величина невыпускаемый резерва мощности равена <span>8000 МВт</span></p>
-          </div>
-          <div class="col-sm-3">
-           <button>Скачать отчет</button>
-          </div>
-        </div>
-      </section>
+      <component v-bind:is="view"></component>
     </transition>
     <footer>
       <div class="row no-gutters authorInfo">
@@ -162,26 +57,26 @@
 </template>
 
 <script>
+import FactCalc from '../components/FactCalc'
+import ForecastCalc from '../components/ForecastCalc'
+
 export default {
   data: () => ({
-    isFactCalcVis: false,
-    isForecastCalcVis: false,
-    isFactResultVis: false,
-    isForecastResultVis: false
+    view: ''
   }),
+  components: {
+    FactCalc, ForecastCalc
+  },
   methods: {
     onChange(event) {
       if (event.target.value === 'Фактический') {
-        this.isFactCalcVis = true
-        this.isForecastCalcVis = false
+        this.view = FactCalc
       }
       else if (event.target.value === 'Прогнозный') {
-        this.isFactCalcVis = false
-        this.isForecastCalcVis = true
+        this.view = ForecastCalc
       }
       else {
-        this.isFactCalcVis = false
-        this.isForecastCalcVis = false
+        this.view = ''
       }
     }
   }
