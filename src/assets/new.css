@@ -52,19 +52,21 @@ section.info{
 	line-height: 24px;
 	margin: 10px 50px 10px 50px;
 }
-section.factCalc{
+section.calc{
 	margin: 10px 50px 0 50px;
 	border: 1px solid rgba(172, 148, 102, 0.7);
 	background: rgba(172, 148, 102, 0.1);
 	border-radius: 10px;
-	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  overflow: hidden;
 }
-section.factCalc div.calcStart {
+section.calc div.calcStart {
 	margin: 20px 0px 20px 50px;
 	font-size: 20px;
 	font-family: 'Roboto', sans-serif;
 }
-section.factCalc div.calcStart input[type="datetime"], #systemChoice, #sectionChoice {
+section.calc div.calcStart input[type="datetime"], #systemChoice, #sectionChoice, #genChoice,
+section.calc div.calcStart input[type="number"] {
 	border: 1px solid rgba(172, 148, 102, 0.7);
 	background: #fff;
 	font-size: 20px;
@@ -74,7 +76,7 @@ section.factCalc div.calcStart input[type="datetime"], #systemChoice, #sectionCh
 	border-radius: 6px;
 	margin-left: 20px; 
 }
-section.factCalc form input[type="button"], button{
+section.calc form input[type="button"], button{
 	border: none;
 	font-size: 20px;
 	font-family: 'Roboto', sans-serif;
@@ -84,23 +86,28 @@ section.factCalc form input[type="button"], button{
 	background: rgba(15, 69, 118, 0.6);
 	color: #fff;
 }
-section.factCalc form input[type="button"]:hover, button:hover{
+section.calc form input[type="button"]:hover, button:hover{
 	border: 1px solid rgba(15, 69, 118, 0.6);
   background: #fff;
   padding: 3px 31px 3px 31px;
 	color: rgba(15, 69, 118, 0.6);
 }
-section.factCalc div.saveCalcResult{
+section div.calcResult figure#resultFig img {
+  display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+section.calc div.saveCalcResult{
   align-items: center;
 }
-section.factCalc div.saveCalcResult p{
+section.calc div.saveCalcResult p{
 	font-size: 20px;
 	margin: 20px 0 20px 50px;
 	font-family: 'Roboto', sans-serif;
 	font-weight: 500;
 	color: #000;
 }
-section.factCalc div.saveCalcResult span{
+section.calc div.saveCalcResult span{
 	font-size: 20px;
 	font-family: 'Roboto', sans-serif;
 	font-weight: 700;
