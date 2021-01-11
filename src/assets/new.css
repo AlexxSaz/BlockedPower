@@ -1,0 +1,121 @@
+body{
+	margin: 0 -15px;
+}
+header div.menu h1{
+	text-align: left;
+	font-family: 'Roboto', sans-serif;
+	color: #b4967a;
+	font-size: 28px;
+	font-weight: 700;
+	padding-bottom: 20px ; 
+	display: inline;
+}
+header{
+	border-bottom: 8px solid rgba(172, 148, 102, 0.3);
+	margin: 0 20px 0 20px;
+	padding: 10px 0 10px 0;
+}
+header div.menu img#logo{
+	max-width: 114px;
+	max-height: 128px;
+	padding-left: 20px;
+	display: inline;
+}
+div.calcChoice{
+	font-size: 20px;
+	padding: 5px 0 5px 50px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 500;
+	color: #0f4576;
+}
+div.calcChoice label, form.calcChoice{
+	padding-left: 5px;
+	display: inline;
+}
+div.calcChoice select{
+	font-size: 20px;
+	font-family: 'Roboto', sans-serif;
+	padding: 4px;
+	font-weight: 500;
+	border-radius: 6px;
+	border: 2px solid #0f4576;
+}
+div.calcChoice select:focus{
+	border-color: #0f4576;
+	background: rgba(15, 69, 118, 0.6);
+	color: #fff;
+}
+section.info{
+	border-bottom: 1px solid #001;
+	font-weight: 400;
+	font-family: 'Roboto', sans-serif;
+	line-height: 24px;
+	margin: 10px 50px 10px 50px;
+}
+section.factCalc{
+	margin: 10px 50px 0 50px;
+	border: 1px solid rgba(172, 148, 102, 0.7);
+	background: rgba(172, 148, 102, 0.1);
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+section.factCalc div.calcStart {
+	margin: 20px 0px 20px 50px;
+	font-size: 20px;
+	font-family: 'Roboto', sans-serif;
+}
+section.factCalc div.calcStart input[type="datetime"], #systemChoice, #sectionChoice {
+	border: 1px solid rgba(172, 148, 102, 0.7);
+	background: #fff;
+	font-size: 20px;
+	font-family: 'Roboto', sans-serif;
+	padding: 4px;
+	font-weight: 500;
+	border-radius: 6px;
+	margin-left: 20px; 
+}
+section.factCalc form input[type="button"], button{
+	border: none;
+	font-size: 20px;
+	font-family: 'Roboto', sans-serif;
+	padding: 4px 32px 4px 32px; 
+	font-weight: 500;
+	border-radius: 6px;
+	background: rgba(15, 69, 118, 0.6);
+	color: #fff;
+}
+section.factCalc form input[type="button"]:hover, button:hover{
+	border: 1px solid rgba(15, 69, 118, 0.6);
+  background: #fff;
+  padding: 3px 31px 3px 31px;
+	color: rgba(15, 69, 118, 0.6);
+}
+section.factCalc div.saveCalcResult{
+  align-items: center;
+}
+section.factCalc div.saveCalcResult p{
+	font-size: 20px;
+	margin: 20px 0 20px 50px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 500;
+	color: #000;
+}
+section.factCalc div.saveCalcResult span{
+	font-size: 20px;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 700;
+	color: #0f4576;
+	text-decoration: underline;
+}
+footer{
+	border-top: 3px solid rgba(172, 148, 102, 0.3);
+	margin: 30px 60px 0 60px;
+	padding: 10px 0 10px 0;
+	text-align: center;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .3s ease;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
