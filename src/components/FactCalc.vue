@@ -4,7 +4,7 @@
       <div class="row no-gutters calcStart">
         <div class="col-sm-12">
           <label for="timeChoice">Введите расчетный час</label>
-          <input type="datetime" name="timeChoice" id="timeChoice" placeholder="11.11.20 20:00">
+          <input type="datetime" name="timeChoice" id="timeChoice" :placeholder="calcDate | date('datetime')" :value="calcDateValue | date('datetime')">
         </div>
        </div>
        <div class="row no-gutters calcStart">
@@ -59,7 +59,9 @@
 <script>
 export default {
   data: () => ({
-    isFactResultVis: false
+    isFactResultVis: false,
+    calcDate: new Date(),
+    calcDateValue: ''
   })
 }
 </script>
