@@ -1,10 +1,13 @@
 <template>
   <section id="factCalc" class="calc">
-    <form>
+    <form @submit.prevent="submitHandler">
       <div class="row no-gutters calcStart">
         <div class="col-sm-12">
           <label for="timeChoice">Введите расчетный час</label>
-          <input type="datetime" name="timeChoice" id="timeChoice" :placeholder="calcDate | date('datetime')" :value="calcDateValue | date('datetime')">
+          <input type="datetime" name="timeChoice" id="timeChoice" class=""
+          :placeholder="calcDate | date('datetime')"
+          v-model="calcDateValue" :class="{invalid: ($v.calcDateValue.$dirty && !$v.calcDateValue.required)}"
+          >
         </div>
        </div>
        <div class="row no-gutters calcStart">
@@ -30,7 +33,7 @@
        </div>
        <div class="row no-gutters calcStart">
          <div class="col-sm-12">
-           <input type="button" name="getData" value="Расчет" @click="isFactResultVis = true"> <!-- При нажатии на эту кнопку будут подгружаться данные из БД и производиться расчет -->
+           <input type="submit" name="getData" value="Расчет"> <!-- При нажатии на эту кнопку будут подгружаться данные из БД и производиться расчет -->
         </div>
       </div>
      </form>
@@ -57,11 +60,30 @@
 </template>
 
 <script>
+import {required} from 'vuelidate/lib/validators'
+
 export default {
   data: () => ({
     isFactResultVis: false,
     calcDate: new Date(),
     calcDateValue: ''
-  })
+  }),
+  validations: {
+    calcDateValue: {required}
+  },
+  methods: {
+    submitHandler() {
+      if(this.$v.$invalid) {
+        this.$v.$touch()
+        return
+      }
+      const formData = {
+        calcDateValue: this.calcDateValue
+      }
+
+      console.log(formData)
+      this.isFactResultVis = true
+    }
+  }
 }
 </script>

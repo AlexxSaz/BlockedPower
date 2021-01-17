@@ -76,7 +76,7 @@ section.calc div.calcStart input[type="number"] {
 	border-radius: 6px;
 	margin-left: 20px; 
 }
-section.calc form input[type="button"], button{
+section.calc form input[type="submit"], button{
 	border: none;
 	font-size: 20px;
 	font-family: 'Roboto', sans-serif;
@@ -86,7 +86,7 @@ section.calc form input[type="button"], button{
 	background: rgba(15, 69, 118, 0.6);
 	color: #fff;
 }
-section.calc form input[type="button"]:hover, button:hover{
+section.calc form input[type="submit"]:hover, button:hover{
 	border: 1px solid rgba(15, 69, 118, 0.6);
   background: #fff;
   padding: 3px 31px 3px 31px;
@@ -119,6 +119,9 @@ footer{
 	margin: 30px 60px 0 60px;
 	padding: 10px 0 10px 0;
 	text-align: center;
+}
+.invalid {
+  border-bottom: 3px solid rgb(230, 31, 31) !important;
 }
 .fade-enter-active, .fade-leave-active {
   transition: opacity .3s ease;

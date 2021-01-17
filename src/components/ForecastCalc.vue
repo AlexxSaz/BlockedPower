@@ -1,10 +1,12 @@
 <template>
   <section id="forecastCalc" class="calc">
-    <form>
+    <form @submit.prevent="submitHandler">
         <div class="row no-gutters calcStart">
           <div class="col-sm-12">
             <label for="tempChoice">Введите температуру наружного воздуха</label>
-            <input type="number" name="tempChoice" id="tempChoice" placeholder="22" min="-50" max="40">
+            <input type="number" name="tempChoice" id="tempChoice" placeholder="22" min="-50" max="40"
+              v-model="calcTempValue" :class="{invalid: ($v.calcTempValue.$dirty && !$v.calcTempValue.required)}"
+            >
           </div>
         </div>
         <div class="row no-gutters calcStart">
@@ -47,7 +49,7 @@
         </div>
         <div class="row no-gutters calcStart">
           <div class="col-sm-12">
-           <input type="button" name="getData" value="Расчет" @click="isForecastResultVis = true"> <!-- При нажатии на эту кнопку будут подгружаться данные из БД и производиться расчет -->
+           <input type="submit" name="getData" value="Расчет"> <!-- При нажатии на эту кнопку будут подгружаться данные из БД и производиться расчет -->
           </div>
         </div>
       </form>
@@ -74,9 +76,29 @@
 </template>
 
 <script>
+import {required} from 'vuelidate/lib/validators'
+
 export default {
   data: () => ({
-    isForecastResultVis: false
-  })
+    isForecastResultVis: false,
+    calcTempValue: ''
+  }),
+  validations: {
+    calcTempValue: {required}
+  },
+  methods: {
+    submitHandler() {
+      if(this.$v.$invalid) {
+        this.$v.$touch()
+        return
+      }
+      const formData = {
+        calcTempValue: this.calcTempValue
+      }
+
+      console.log(formData)
+      this.isForecastResultVis = true
+    }
+  }
 }
 </script>
