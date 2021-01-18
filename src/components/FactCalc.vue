@@ -77,11 +77,6 @@ export default {
         this.$v.$touch()
         return
       }
-      const formData = {
-        calcDateValue: this.calcDateValue
-      }
-
-      console.log(formData)
       this.isFactResultVis = true
     }
   }
